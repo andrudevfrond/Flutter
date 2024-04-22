@@ -1,4 +1,5 @@
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:peliculas/models/models.dart';
 import 'package:peliculas/widgets/widgets.dart';
@@ -52,13 +53,16 @@ final Movie movie;
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
           padding: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
-          child: Text(
-            movie.title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          child: FadeIn(
+            delay: Duration(milliseconds: 300),
+            child: Text(
+              movie.title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         ),
         background: FadeInImage(
@@ -106,15 +110,21 @@ class _PosterAndTitle extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(movie.title,style: textTheme.headlineMedium,overflow: TextOverflow.ellipsis,maxLines: 2,),
-                Text(movie.originalTitle,style: textTheme.headlineSmall,overflow: TextOverflow.ellipsis,maxLines: 2,),
+                FadeIn(
+                  delay: Duration(milliseconds: 400),
+                  child: Text(movie.title,style: textTheme.headlineMedium,overflow: TextOverflow.ellipsis,maxLines: 2,)),
+                FadeIn(
+                  delay: Duration(milliseconds: 600),
+                  child: Text(movie.originalTitle,style: textTheme.headlineSmall,overflow: TextOverflow.ellipsis,maxLines: 2,)),
                 Row(
                   children: [
                     Icon(Icons.star_outline, size: 15, color: Colors.yellow[800]),
                     const SizedBox(
                       width: 10.0,
                     ),
-                    Text(movie.voteAverage.toString(), style: textTheme.bodySmall),
+                    FadeIn(
+                      delay: Duration(milliseconds: 800),
+                      child: Text(movie.voteAverage.toString(), style: textTheme.bodySmall)),
                   ],
                 )
               ],
